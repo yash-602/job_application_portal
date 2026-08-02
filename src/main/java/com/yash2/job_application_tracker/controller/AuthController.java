@@ -55,7 +55,7 @@ public class AuthController {
 
         return ResponseEntity.ok()
                 .headers(headers)
-                .body(new AuthResponse("Login successful.", true));
+                .body(new AuthResponse("Login successful.", true, result.getRole(), result.getProfileComplete()));
     }
 
     @PostMapping("/refresh")

@@ -24,6 +24,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, JwtAuthFilter jwtAuthFilter) throws Exception {
         http
+                .cors(org.springframework.security.config.Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .formLogin(form -> form.disable())
                 .httpBasic(basic -> basic.disable())

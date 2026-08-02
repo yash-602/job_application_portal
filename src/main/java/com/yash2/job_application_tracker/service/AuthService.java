@@ -93,7 +93,7 @@ public class AuthService {
         String accessToken = jwtUtil.generateToken(user.getId(), user.getEmail(), user.getRole());
         String rawRefreshToken = generateAndStoreRefreshToken(user);
 
-        return new LoginResult(accessToken, rawRefreshToken);
+        return new LoginResult(accessToken, rawRefreshToken, user.getRole(), user.isProfileComplete());
     }
 
     public LoginResult refresh(String rawRefreshToken) {
@@ -114,7 +114,7 @@ public class AuthService {
         String accessToken = jwtUtil.generateToken(user.getId(), user.getEmail(), user.getRole());
         String newRawRefreshToken = generateAndStoreRefreshToken(user);
 
-        return new LoginResult(accessToken, newRawRefreshToken);
+        return new LoginResult(accessToken, newRawRefreshToken, user.getRole(), user.isProfileComplete());
     }
 
     public void logout(String rawRefreshToken) {

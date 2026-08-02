@@ -27,4 +27,5 @@ public class User {
     private String refreshTokenHash;
     private Instant refreshTokenExpiry;
     private Instant createdAt = Instant.now();
+    private boolean profileComplete = false;
 }
