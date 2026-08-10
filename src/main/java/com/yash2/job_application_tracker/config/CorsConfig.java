@@ -15,7 +15,11 @@ public class CorsConfig {
     public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOriginPatterns(List.of("http://localhost:517*"));
+        config.setAllowedOriginPatterns(List.of(
+            "http://localhost:517*",
+            "https://*.vercel.app",
+            "https://undocked-*.vercel.app"
+        ));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setExposedHeaders(List.of("Set-Cookie"));
