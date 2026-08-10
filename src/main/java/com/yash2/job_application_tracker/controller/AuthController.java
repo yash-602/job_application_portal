@@ -30,6 +30,8 @@ public class AuthController {
     private AuthService authService;
     @Value("${cookie.secure}")
     private boolean cookieSecure;
+    @Value("${cookie.same-site}")
+    private String cookieSameSite;
     @Value("${jwt.access-token-expiration-ms}")
     private long accessTokenExpirationMs;
     @Value("${jwt.refresh-token-expiration-ms}")
@@ -113,7 +115,7 @@ public class AuthController {
         return ResponseCookie.from(name, value)
                 .httpOnly(true)
                 .secure(cookieSecure)
-                .sameSite("Lax")
+                .sameSite(cookieSameSite)
                 .path("/")
                 .maxAge(maxAge)
                 .build();
