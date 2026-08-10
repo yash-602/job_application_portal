@@ -1,6 +1,5 @@
-# Stage 1: Build
-# Cache bust: 2026-08-10
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+# Stage 1: Build — using 3.9.9 to force fresh Docker cache bust
+FROM maven:3.9.9-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
